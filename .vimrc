@@ -28,7 +28,8 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'klen/python-mode'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 
 call neobundle#end()
 

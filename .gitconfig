@@ -1,0 +1,39 @@
+################################################################################
+#                                  Git Config                                  #
+################################################################################
+
+[alias]
+    merge-into = "!f() { \
+        while getopts ':d' opt; do \
+            case $opt in \
+                d) DELETE=true;; \
+            esac; \
+            shift; \
+        done; \
+        if [ \"$#\" -ne 2 ]; then \
+            BRANCH=$(git rev-parse --abbrev-ref HEAD); \
+        else \
+            BRANCH=$2; \
+        fi; \
+        if [ \"$1\" == \"$BRANCH\" ]; then \
+            echo -e \"\\e[31mBranch $BRANCH cannot be merged into itself\\e[0m\"; \
+            exit 1; \
+        fi; \
+        echo -e \"\\e[36mMerging branch $BRANCH into $1...\\e[0m\"; \
+        git checkout $1 && git merge $BRANCH; \
+        if [ \"$DELETE\" == \"true\" ]; then \
+            git branch -d $BRANCH; \
+        fi; \
+    }; f"
+
+    push-all = "!f() { \
+        if [ \"$#\" -ne 1 ]; then \
+            BRANCH=$(git rev-parse --abbrev-ref HEAD); \
+        else \
+            BRANCH=$1; \
+        fi; \
+        for REMOTE in $(git remote); do \
+        echo -e \"\\e[36mPushing branch $BRANCH to $REMOTE...\\e[0m\"; \
+            git push $REMOTE $BRANCH; \
+        done; \
+    }; f"

@@ -57,10 +57,10 @@ set nowrap
 set encoding=utf-8
 
 " Better Syntatic error colors
-highlight SyntasticError ctermbg=89 guibg=89
-highlight SyntasticWarning ctermbg=89 guibg=89
-highlight SyntasticStyleError ctermbg=89 guibg=89
-highlight SyntasticStyleWarning ctermbg=89 guibg=89
+highlight SyntasticError ctermbg=89
+highlight SyntasticWarning ctermbg=89
+highlight SyntasticStyleError ctermbg=89
+highlight SyntasticStyleWarning ctermbg=89
 
 " Highlight line excess at colum 80
 augroup vimrc_autocmds

@@ -57,10 +57,10 @@ syntax on
 colorscheme molokai
 
 set number
+set nowrap
+set cursorline
 set laststatus=2
 set t_Co=256
-set cursorline
-set nowrap
 set encoding=utf-8
 
 " Better Syntatic error colors
@@ -68,13 +68,6 @@ highlight SyntasticError ctermbg=89
 highlight SyntasticWarning ctermbg=89
 highlight SyntasticStyleError ctermbg=89
 highlight SyntasticStyleWarning ctermbg=89
-
-" Highlight line excess at colum 80
-augroup vimrc_autocmds
-    autocmd!
-    autocmd FileType python highlight Excess ctermbg=Red guibg=Red
-    autocmd FileType python match Excess /\%80v.*/
-augroup END
 " }}}
 
 
@@ -89,9 +82,51 @@ nmap <Home> ^
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set textwidth=80
 set smarttab
 set expandtab
+
+" Set style options dynamically
+function SetStyleOptions(size, ...)
+    let &tabstop = a:size
+    let &softtabstop = a:size
+    let &shiftwidth = a:size
+
+    let l:expandtab = a:0 > 0 ? a:1 : 1
+    let l:smarttab = a:0 > 1 ? a:2 : 1
+
+    if expandtab == 0
+        setlocal noexpandtab
+    endif
+
+    if smarttab == 0
+        setlocal nosmarttab
+    endif
+endfunction
+
+" Phyton Style
+augroup filetype_python
+    autocmd!
+    autocmd FileType python highlight Excess ctermbg=Red guibg=Red
+    autocmd FileType python match Excess /\%80v.*/
+augroup END
+
+" Frontend Style
+augroup filetype_frontend
+    autocmd!
+    autocmd FileType css call SetStyleOptions(2)
+    autocmd FileType scss call SetStyleOptions(2)
+    autocmd FileType html call SetStyleOptions(2)
+    autocmd FileType htmldjango call SetStyleOptions(2)
+    autocmd FileType javascript call SetStyleOptions(2)
+augroup END
+
+" C-like Style
+augroup filetype_clike
+    autocmd!
+    autocmd FileType c call SetStyleOptions(8, 0, 0)
+    autocmd FileType cpp call SetStyleOptions(8, 0, 0)
+    autocmd FileType go call SetStyleOptions(8, 0, 0)
+augroup END
 " }}}
 
 

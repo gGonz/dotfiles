@@ -15,6 +15,14 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
+if !isdirectory(expand('~/.vim/bundle'))
+    echo "Installing NeoBundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+endif
+
+
 " Required:
 call neobundle#begin(expand('~/.vim/bundle/'))
 
@@ -52,8 +60,6 @@ set laststatus=2
 set t_Co=256
 set cursorline
 set nowrap
-"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
-"set guifont=Ubuntu\ Mono\ derivative\ Powerline
 set encoding=utf-8
 
 " Better Syntatic error colors

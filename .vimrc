@@ -39,6 +39,7 @@ NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'airblade/vim-gitgutter'
 
 call neobundle#end()
 

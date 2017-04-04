@@ -83,6 +83,7 @@ export EDITOR=vim
 export HISTSIZE=10000
 export SAVEHIST=10000
 export HISTFILE=$HOME/.history
+export LC_ALL=en_US.UTF-8
 
 # Go
 export GOPATH=$HOME/devel/go

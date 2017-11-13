@@ -30,7 +30,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'tomasr/molokai'
+NeoBundle 'dracula/vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
@@ -38,7 +38,6 @@ NeoBundle 'klen/python-mode'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'airblade/vim-gitgutter'
 
 call neobundle#end()
@@ -55,7 +54,7 @@ NeoBundleCheck
 
 " Visual settings ---------------------------------------------------------- {{{
 syntax on
-colorscheme molokai
+colorscheme dracula
 
 set number
 set nowrap
@@ -145,7 +144,7 @@ augroup END
 " Plugins ------------------------------------------------------------------ {{{
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme="badwolf"
+let g:airline_theme="dracula"
 
 " AutoPairs
 au FileType htmldjango let b:AutoPairs = {

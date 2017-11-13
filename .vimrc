@@ -64,11 +64,13 @@ set laststatus=2
 set t_Co=256
 set encoding=utf-8
 
-" Better Syntatic error colors
+" Better Syntastic error colors
 highlight SyntasticError ctermbg=89
 highlight SyntasticWarning ctermbg=89
 highlight SyntasticStyleError ctermbg=89
 highlight SyntasticStyleWarning ctermbg=89
+highlight SpecialKey ctermfg=237
+highlight SpecialKey ctermbg=NONE
 " }}}
 
 
@@ -79,21 +81,25 @@ nmap <Home> ^
 " }}}
 
 
+
 " Code style --------------------------------------------------------------- {{{
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
+set list
+set listchars=tab:›-,space:·
 
 " Set style options dynamically
-function SetStyleOptions(size, ...)
+function! SetStyleOptions(size, ...)
     let &tabstop = a:size
     let &softtabstop = a:size
     let &shiftwidth = a:size
 
     let l:expandtab = a:0 > 0 ? a:1 : 1
     let l:smarttab = a:0 > 1 ? a:2 : 1
+    let l:showlist = a:0 > 2 ? a:3 : 1
 
     if expandtab == 0
         setlocal noexpandtab
@@ -101,6 +107,10 @@ function SetStyleOptions(size, ...)
 
     if smarttab == 0
         setlocal nosmarttab
+    endif
+
+    if showlist == 1
+        setlocal list
     endif
 endfunction
 
@@ -147,6 +157,7 @@ let g:jedi#show_call_signatures = 0
 " NERDTree
 map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', '.*__pycache__.*']
+autocmd FileType nerdtree setlocal nolist
 
 " python-mode
 let g:pymode_folding = 0

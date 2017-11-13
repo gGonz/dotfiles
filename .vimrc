@@ -39,6 +39,8 @@ NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'digitaltoad/vim-pug'
+NeoBundle 'leafgarland/typescript-vim'
 
 call neobundle#end()
 
@@ -113,14 +115,14 @@ function! SetStyleOptions(size, ...)
     endif
 endfunction
 
-" Phyton Style
+" Phyton
 augroup filetype_python
     autocmd!
     autocmd FileType python highlight Excess ctermbg=Red guibg=Red
     autocmd FileType python match Excess /\%80v.*/
 augroup END
 
-" Frontend Style
+" Frontend
 augroup filetype_frontend
     autocmd!
     autocmd FileType css call SetStyleOptions(2)
@@ -130,12 +132,18 @@ augroup filetype_frontend
     autocmd FileType javascript call SetStyleOptions(2)
 augroup END
 
-" C-like Style
+" C-like
 augroup filetype_clike
     autocmd!
     autocmd FileType c call SetStyleOptions(8, 0, 0)
     autocmd FileType cpp call SetStyleOptions(8, 0, 0)
     autocmd FileType go call SetStyleOptions(8, 0, 0)
+augroup END
+
+" Another filetypes
+augroup filetype_another
+    autocmd!
+    autocmd FileType dockerfile call SetStyleOptions(2)
 augroup END
 " }}}
 

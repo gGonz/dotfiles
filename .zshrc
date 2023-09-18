@@ -1,3 +1,7 @@
+###############################################################################
+#                                 ZSH Config                                  #
+###############################################################################
+
 # Custom functions
 function __git_prompt_info() {
     GIT_PROMPT_PREFIX="(%{$fg_bold[green]%}"
@@ -83,6 +87,7 @@ export EDITOR=nvim
 export HISTSIZE=10000
 export SAVEHIST=10000
 export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Aliases
 alias tmux="tmux -2"

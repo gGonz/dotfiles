@@ -90,6 +90,17 @@ alias tma='tmux attach -t'
 alias tmn='tmux new -s'
 alias tml='tmux list-sessions'
 
+# Local executables
+export PATH="$HOME/.local/bin:$PATH"
+
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# pyenv
+export PYENV_ROOT=$HOME/.pyenv
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
@@ -102,6 +113,3 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
-
-# Start homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"

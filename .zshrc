@@ -79,33 +79,16 @@ key[PageDown]="$terminfo[knp]"
 PROMPT='[%{$fg_bold[white]%}%n%{$reset_color%}@%{$fg_bold[red]%}%m%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%}$(__git_prompt_info)%{$reset_color%}]$ '
 
 # Environment variables
-export EDITOR=vim
+export EDITOR=nvim
 export HISTSIZE=10000
 export SAVEHIST=10000
-export HISTFILE=$HOME/.history
 export LC_ALL=en_US.UTF-8
-
-# Go
-export GOPATH=$HOME/devel/go
-export PATH="$PATH:$GOPATH/bin"
-
-# Rust
-export PATH="$PATH:$HOME/.cargo/bin"
 
 # Aliases
 alias tmux="tmux -2"
 alias tma='tmux attach -t'
 alias tmn='tmux new -s'
 alias tml='tmux list-sessions'
-
-# Scripts
-source $HOME/.scripts/z.sh
-
-# Virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PORJECT_HOME=$HOME/devel
-export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
-source /usr/bin/virtualenvwrapper_lazy.sh
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
@@ -119,3 +102,6 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
+
+# Start homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
